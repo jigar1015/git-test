@@ -3,6 +3,6 @@ COPY . /app
 WORKDIR /app
 USER root
 RUN ./gradlew clean build 
-COPY --from=/app/build/libs/*.jar /app/
+COPY /app/build/libs/*.jar /app/
 ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/gradle-example-0.0.2-SNAPSHOT.jar"]
 EXPOSE 8080
