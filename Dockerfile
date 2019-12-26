@@ -3,9 +3,6 @@ COPY . /app
 WORKDIR /app
 USER root
 RUN ./gradlew clean build 
-
-FROM openjdk:8-jre-slim
-RUN mkdir /app
 COPY --from=build /app/build/libs/*.jar /app/
-ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/gradle-example-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseCGroupMemoryLimitForHeap", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/gradle-example-0.0.2-SNAPSHOT.jar"]
 EXPOSE 8080
