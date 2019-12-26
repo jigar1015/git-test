@@ -1,6 +1,7 @@
 FROM gradle:4.7.0-jdk8-alpine AS build
 COPY . /app
 WORKDIR /app
+USER root
 RUN ./gradlew clean build 
 
 FROM openjdk:8-jre-slim
